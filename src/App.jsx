@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Component } from "react";
 import { ethers } from "ethers";
 import "./App.css";
 import abi from "./utils/WavePortal.json";
+import MIDISounds from "midi-sounds-react";
 
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
@@ -84,6 +85,10 @@ const App = () => {
     }
   }
 
+  const playTestInstrument = async() => {
+		midiSounds.playChordNow(3, [60], 2.5);
+	}
+
   useEffect(() => {
     checkIfWalletIsConnected();
   }, [])
@@ -112,6 +117,10 @@ const App = () => {
             Connect Wallet
           </button>
         )}
+
+        <button className="waveButton" onClick={playTestInstrument}>
+          play
+        </button>
       </div>
     </div>
   );
