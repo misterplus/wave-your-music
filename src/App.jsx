@@ -85,6 +85,8 @@ const App = () => {
     }
   }
 
+  var midiSounds;
+
   const playTestInstrument = async() => {
 		midiSounds.playChordNow(3, [60], 2.5);
 	}
@@ -119,8 +121,9 @@ const App = () => {
         )}
 
         <button className="waveButton" onClick={playTestInstrument}>
-          play
+          Play Test Instrument
         </button>
+        <MIDISounds ref={(ref) => (midiSounds = ref)} appElementName="root" instruments={[3]} />	
       </div>
     </div>
   );
